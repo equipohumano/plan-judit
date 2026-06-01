@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan de Formación IA · Judit · LUCE IT</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0d0f12;--bg2:#13161b;--bg3:#1a1e25;
+    --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);
+    --text:#e8eaf0;--muted:#7a8094;
+    --accent:#34d399;--teal:#34d399;--blue:#4fa3f7;
+    --mod1:#f472b6;--mod2:#a78bfa;--mod3:#34d399;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;min-height:100vh;overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;}
+  .hero{position:relative;padding:80px 48px 64px;border-bottom:1px solid var(--border);overflow:hidden;}
+  .hero::after{content:'';position:absolute;top:-120px;right:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(244,114,182,0.06) 0%,transparent 70%);pointer-events:none;}
+  .hero-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:28px;}
+  .logo-pill{display:flex;align-items:center;gap:8px;background:var(--bg3);border:1px solid var(--border2);border-radius:100px;padding:6px 14px 6px 8px;}
+  .logo-dot{width:24px;height:24px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+  .logo-dot svg{width:12px;height:12px;}
+  .logo-text{font-size:12px;font-weight:500;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;}
+  .divider-dot{width:4px;height:4px;background:var(--border2);border-radius:50%;}
+  .year-badge{font-size:11px;color:var(--accent);font-weight:500;letter-spacing:.08em;}
+  .hero h1{font-family:'DM Serif Display',serif;font-size:clamp(36px,5vw,64px);line-height:1.05;color:var(--text);margin-bottom:8px;font-weight:400;}
+  .hero h1 em{font-style:italic;color:var(--mod1);}
+  .hero-sub{font-size:16px;color:var(--muted);margin-bottom:40px;max-width:560px;line-height:1.6;font-weight:300;}
+  .hero-stats{display:flex;gap:0;flex-wrap:wrap;}
+  .stat{padding:16px 28px;border:1px solid var(--border);border-right:none;}
+  .stat:first-child{border-radius:10px 0 0 10px;}
+  .stat:last-child{border-radius:0 10px 10px 0;border-right:1px solid var(--border);}
+  .stat-val{font-family:'DM Serif Display',serif;font-size:26px;color:var(--text);line-height:1;margin-bottom:4px;}
+  .stat-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;}
+  .progress-section{padding:24px 48px;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:24px;}
+  .progress-label{font-size:12px;color:var(--muted);white-space:nowrap;text-transform:uppercase;letter-spacing:.05em;}
+  .progress-track{flex:1;height:3px;background:var(--border2);border-radius:2px;}
+  .progress-fill{height:100%;background:var(--accent);border-radius:2px;width:0%;transition:width .6s ease;}
+  .progress-pct{font-size:13px;font-weight:500;color:var(--accent);min-width:36px;text-align:right;}
+  .main{display:grid;grid-template-columns:280px 1fr;min-height:calc(100vh - 240px);}
+  .sidebar{border-right:1px solid var(--border);padding:32px 0;position:sticky;top:0;height:calc(100vh - 240px);overflow-y:auto;}
+  .sidebar-title{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding:0 24px 16px;}
+  .mod-nav{list-style:none;}
+  .mod-nav-btn{width:100%;display:flex;align-items:center;gap:12px;padding:14px 24px;background:none;border:none;cursor:pointer;text-align:left;transition:background .15s;border-left:2px solid transparent;color:var(--text);font-family:'DM Sans',sans-serif;}
+  .mod-nav-btn:hover{background:var(--bg3);}
+  .mod-nav-btn.active{background:var(--bg3);border-left-color:var(--accent);}
+  .nav-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;border:1px solid currentColor;opacity:.5;transition:opacity .2s;}
+  .mod-nav-btn.active .nav-num,.mod-nav-btn:hover .nav-num{opacity:1;}
+  .nav-info{flex:1;}
+  .nav-title{font-size:13px;font-weight:400;color:var(--text);line-height:1.3;margin-bottom:2px;}
+  .nav-weeks{font-size:11px;color:var(--muted);}
+  .nav-check{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--border2);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+  .nav-check.done{background:var(--accent);border-color:var(--accent);}
+  .nav-check.done::after{content:'';width:6px;height:4px;border-left:1.5px solid #000;border-bottom:1.5px solid #000;transform:rotate(-45deg) translateY(-1px);display:block;}
+  .sidebar-divider{height:1px;background:var(--border);margin:16px 24px;}
+  .sidebar-note{padding:0 24px;}
+  .sidebar-note p{font-size:12px;color:var(--muted);line-height:1.6;}
+  .content{padding:40px 48px;}
+  .module-panel{display:none;animation:fadeIn .3s ease;}
+  .module-panel.active{display:block;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  .module-header{display:flex;align-items:flex-start;gap:20px;margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid var(--border);}
+  .module-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+  .module-header-text{flex:1;}
+  .module-eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;font-weight:500;}
+  .module-title{font-family:'DM Serif Display',serif;font-size:28px;font-weight:400;line-height:1.15;margin-bottom:10px;}
+  .module-desc{font-size:14px;color:var(--muted);line-height:1.6;max-width:600px;}
+  .module-meta-pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+  .pill{font-size:11px;padding:4px 10px;border-radius:100px;border:1px solid var(--border2);color:var(--muted);font-weight:400;}
+  .tiempo-box{display:inline-flex;align-items:center;gap:10px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px 18px;margin-bottom:32px;}
+  .tiempo-icon{font-size:16px;opacity:.7;}
+  .tiempo-text{font-size:12px;color:var(--muted);line-height:1.4;}
+  .tiempo-text strong{color:var(--text);font-weight:500;}
+  .section-label{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:16px;font-weight:500;}
+  .obj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:40px;}
+  .obj-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px;display:flex;gap:12px;align-items:flex-start;}
+  .obj-dot{width:6px;height:6px;border-radius:50%;margin-top:6px;flex-shrink:0;}
+  .obj-text{font-size:13px;color:var(--text);line-height:1.5;}
+  .recursos-grid{display:flex;flex-direction:column;gap:16px;margin-bottom:40px;}
+  .recurso-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color .2s;}
+  .recurso-card:hover{border-color:var(--border2);}
+  .recurso-top{padding:20px 24px 16px;display:flex;gap:16px;align-items:flex-start;}
+  .recurso-type-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;background:var(--bg3);border:1px solid var(--border);position:relative;}
+  .recurso-body{flex:1;}
+  .recurso-title-row{display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap;margin-bottom:6px;}
+  .recurso-name{font-size:15px;font-weight:500;color:var(--text);line-height:1.3;}
+  .tag{font-size:10px;padding:3px 9px;border-radius:100px;font-weight:500;white-space:nowrap;flex-shrink:0;margin-top:2px;}
+  .tag-free{background:rgba(52,211,153,.12);color:var(--teal);border:1px solid rgba(52,211,153,.2);}
+  .tag-video{background:rgba(239,68,68,.12);color:#f87171;border:1px solid rgba(239,68,68,.2);}
+  .tag-web{background:rgba(79,163,247,.12);color:var(--blue);border:1px solid rgba(79,163,247,.2);}
+  .tag-article{background:rgba(167,139,250,.12);color:var(--mod2);border:1px solid rgba(167,139,250,.2);}
+  .tag-es{background:rgba(255,255,255,.05);color:var(--muted);border:1px solid var(--border2);}
+  .recurso-short{font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:12px;}
+  .recurso-link-row{display:flex;align-items:center;gap:8px;}
+  .recurso-link{font-size:12px;color:var(--muted);text-decoration:none;word-break:break-all;}
+  .recurso-link:hover{color:var(--accent);}
+  .ext-icon{width:14px;height:14px;opacity:.4;flex-shrink:0;}
+  .recurso-nota-box{padding:14px 24px;background:var(--bg3);border-top:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;}
+  .nota-icon{font-size:13px;flex-shrink:0;margin-top:1px;opacity:.7;}
+  .nota-text{font-size:12.5px;color:var(--muted);line-height:1.6;font-style:italic;}
+  .complete-row{display:flex;justify-content:flex-end;padding-top:16px;border-top:1px solid var(--border);}
+  .complete-btn{display:flex;align-items:center;gap:8px;padding:12px 24px;background:transparent;border:1px solid var(--border2);border-radius:100px;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;transition:all .2s;}
+  .complete-btn:hover{border-color:var(--accent);color:var(--accent);}
+  .complete-btn.done{background:rgba(52,211,153,.1);border-color:var(--accent);color:var(--accent);}
+  .check-circle{width:20px;height:20px;border-radius:50%;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:10px;}
+  .recurso-card.r-done{border-color:rgba(52,211,153,.3);}
+  .recurso-card.r-done .recurso-type-icon::after{content:'✓';position:absolute;top:-5px;right:-5px;width:15px;height:15px;background:var(--teal);color:#000;border-radius:50%;font-size:8px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .recurso-done-row{padding:10px 24px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+  .mod-progress-mini{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px;}
+  .mini-bar{width:60px;height:3px;background:var(--border2);border-radius:2px;overflow:hidden;}
+  .mini-bar-fill{height:100%;background:var(--teal);border-radius:2px;width:0%;transition:width .4s ease;}
+  .recurso-done-btn{display:inline-flex;align-items:center;gap:7px;padding:7px 16px;background:transparent;border:1px solid var(--border2);border-radius:100px;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:12px;cursor:pointer;transition:all .2s;white-space:nowrap;}
+  .recurso-done-btn:hover{border-color:var(--teal);color:var(--teal);}
+  .recurso-done-btn.r-done{background:rgba(52,211,153,.1);border-color:rgba(52,211,153,.4);color:var(--teal);}
+  .r-check{width:16px;height:16px;border-radius:50%;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:8px;flex-shrink:0;transition:all .2s;}
+  .recurso-done-btn.r-done .r-check{background:var(--teal);border-color:var(--teal);color:#000;}
+  .nav-progress{display:flex;align-items:center;gap:5px;margin-top:3px;}
+  .nav-mini-bar{width:36px;height:2px;background:var(--border2);border-radius:2px;overflow:hidden;}
+  .nav-mini-fill{height:100%;background:var(--teal);border-radius:2px;width:0%;transition:width .4s ease;}
+  .nav-mini-pct{font-size:10px;color:var(--muted);}
+  .reset-btn{display:flex;align-items:center;gap:6px;padding:7px 14px;background:transparent;border:1px solid var(--border);border-radius:100px;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:11px;cursor:pointer;transition:all .2s;margin-top:12px;}
+  .reset-btn:hover{border-color:rgba(239,68,68,.4);color:rgba(239,68,68,.6);}
+  .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--bg3);border:1px solid var(--border2);border-radius:100px;padding:10px 20px;font-size:13px;color:var(--text);display:flex;align-items:center;gap:8px;transition:transform .35s cubic-bezier(.34,1.56,.64,1);z-index:999;pointer-events:none;white-space:nowrap;}
+  .toast.show{transform:translateX(-50%) translateY(0);}
+  .toast-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-eyebrow">
+    <div class="logo-pill">
+      <div class="logo-dot">
+        <svg viewBox="0 0 12 12" fill="none"><rect width="5" height="5" rx="1" fill="#0d0f12"/><rect x="7" width="5" height="5" rx="1" fill="#0d0f12"/><rect y="7" width="5" height="5" rx="1" fill="#0d0f12"/><rect x="7" y="7" width="5" height="5" rx="1" fill="#0d0f12"/></svg>
+      </div>
+      <span class="logo-text">LUCE IT · Marketing</span>
+    </div>
+    <div class="divider-dot"></div>
+    <span class="year-badge">Plan formativo 2026</span>
+  </div>
+  <h1>Tu plan de<br>formación en <em>IA</em><br>para Judit</h1>
+  <p class="hero-sub">Hola Judit. Este es tu itinerario personalizado para dominar la inteligencia artificial aplicada al marketing: desde la creación de contenido y la automatización de campañas hasta el análisis predictivo y la hiperpersonalización.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-val">3</div><div class="stat-label">Módulos</div></div>
+    <div class="stat"><div class="stat-val">5</div><div class="stat-label">Recursos</div></div>
+    <div class="stat"><div class="stat-val">~8</div><div class="stat-label">Semanas</div></div>
+    <div class="stat"><div class="stat-val">4</div><div class="stat-label">Gratuitos</div></div>
+  </div>
+</div>
+
+<div class="progress-section">
+  <span class="progress-label">Progreso general</span>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <span class="progress-pct" id="progressPct">0%</span>
+</div>
+
+<div class="main">
+  <aside class="sidebar">
+    <p class="sidebar-title">Módulos</p>
+    <ul class="mod-nav">
+      <li>
+        <button class="mod-nav-btn active" onclick="showModule(0)" style="color:var(--mod1)">
+          <div class="nav-num" style="color:var(--mod1)">01</div>
+          <div class="nav-info">
+            <div class="nav-title">IA aplicada al marketing</div>
+            <div class="nav-weeks">Semanas 1–3</div>
+            <div class="nav-progress"><div class="nav-mini-bar"><div class="nav-mini-fill" id="nav-fill0"></div></div><span class="nav-mini-pct" id="nav-pct0">0%</span></div>
+          </div>
+          <div class="nav-check" id="check0"></div>
+        </button>
+      </li>
+      <li>
+        <button class="mod-nav-btn" onclick="showModule(1)" style="color:var(--mod2)">
+          <div class="nav-num" style="color:var(--mod2)">02</div>
+          <div class="nav-info">
+            <div class="nav-title">Herramientas IA para marketers</div>
+            <div class="nav-weeks">Semanas 4–6</div>
+            <div class="nav-progress"><div class="nav-mini-bar"><div class="nav-mini-fill" id="nav-fill1"></div></div><span class="nav-mini-pct" id="nav-pct1">0%</span></div>
+          </div>
+          <div class="nav-check" id="check1"></div>
+        </button>
+      </li>
+      <li>
+        <button class="mod-nav-btn" onclick="showModule(2)" style="color:var(--mod3)">
+          <div class="nav-num" style="color:var(--mod3)">03</div>
+          <div class="nav-info">
+            <div class="nav-title">Tendencias y estrategia</div>
+            <div class="nav-weeks">Semanas 7–8</div>
+            <div class="nav-progress"><div class="nav-mini-bar"><div class="nav-mini-fill" id="nav-fill2"></div></div><span class="nav-mini-pct" id="nav-pct2">0%</span></div>
+          </div>
+          <div class="nav-check" id="check2"></div>
+        </button>
+      </li>
+    </ul>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-note">
+      <p>Marca cada recurso como completado para llevar el seguimiento de tu progreso. Se guarda automáticamente.</p>
+      <button class="reset-btn" onclick="resetProgress()">
+        <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+        Reiniciar progreso
+      </button>
+    </div>
+  </aside>
+
+  <div class="content">
+
+    <!-- MÓDULO 1 -->
+    <section class="module-panel active" id="panel0">
+      <div class="module-header">
+        <div class="module-icon" style="background:rgba(244,114,182,.1);color:var(--mod1)">📣</div>
+        <div class="module-header-text">
+          <div class="module-eyebrow" style="color:var(--mod1)">Módulo 01 · Semanas 1–3</div>
+          <h2 class="module-title">IA aplicada<br>al marketing</h2>
+          <p class="module-desc">El punto de partida. Entiende cómo la IA está transformando el marketing digital: creación de contenido, personalización, segmentación y automatización de campañas — con el curso de HubSpot Academy como eje central.</p>
+          <div class="module-meta-pills">
+            <span class="pill">~10h de contenido</span><span class="pill">3 recursos</span><span class="pill">Nivel introductorio-medio</span>
+          </div>
+        </div>
+      </div>
+      <div class="tiempo-box">
+        <span class="tiempo-icon">🕐</span>
+        <div class="tiempo-text"><strong>Tiempo estimado: ~10 horas</strong><br>HubSpot AI for Marketers (~4h) + Meta Blueprint (~3h) + artículos HBR (~3h). A tu ritmo.</div>
+      </div>
+      <p class="section-label">Objetivos del módulo</p>
+      <div class="obj-grid">
+        <div class="obj-card"><div class="obj-dot" style="background:var(--mod1)"></div><span class="obj-text">Comprender cómo la IA generativa cambia la creación de contenido, el copywriting y el diseño creativo</span></div>
+        <div class="obj-card"><div class="obj-dot" style="background:var(--mod1)"></div><span class="obj-text">Dominar el vocabulario de marketing con IA: hiperpersonalización, segmentación predictiva, lead scoring</span></div>
+        <div class="obj-card"><div class="obj-dot" style="background:var(--mod1)"></div><span class="obj-text">Identificar casos de uso de IA aplicables a las campañas y estrategias de marketing de LUCE IT</span></div>
+      </div>
+      <p class="section-label">Recursos del módulo</p>
+      <div class="recursos-grid">
+
+        <div class="recurso-card">
+          <div class="recurso-top">
+            <div class="recurso-type-icon">🎓</div>
+            <div class="recurso-body">
+              <div class="recurso-title-row">
+                <span class="recurso-name">HubSpot Academy — AI for Marketers</span>
+                <span class="tag tag-free">Gratuito</span>
+              </div>
+              <p class="recurso-short">Curso oficial de HubSpot específico para marketers: cómo usar la IA para crear contenido, automatizar workflows, analizar datos de clientes y optimizar campañas. Incluye certificación gratuita.</p>
+              <div class="recurso-link-row">
+                <svg class="ext-icon" viewBox="0 0 16 16" fill="none"><path d="M6 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-3M9 2h5m0 0v5m0-5L8 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <a class="recurso-link" href="https://academy.hubspot.com/courses/ai-for-marketers" target="_blank">academy.hubspot.com – AI for Marketers</a>
+              </div>
+            </div>
+          </div>
+          <div class="recurso-nota-box">
+            <span class="nota-icon">💡</span>
+            <p class="nota-text">El recurso central del plan y el mejor punto de partida. HubSpot Academy es la referencia mundial en formación de marketing digital, y este curso está diseñado específicamente para marketers que quieren aplicar IA en su día a día: desde generar copies con IA hasta automatizar nurturing de leads. Al completarlo obtienes un certificado oficial descargable para LinkedIn.</p>
+          </div>
+          <div class="recurso-done-row">
+            <div class="mod-progress-mini"><div class="mini-bar"><div class="mini-bar-fill" id="minibar0"></div></div><span id="minipct0">0 / 3</span></div>
+            <button class="recurso-done-btn" id="rbtn-0-0" onclick="toggleRecurso(0,0)"><div class="r-check">✓</div> Marcar como hecho</button>
+          </div>
+        </div>
+
+        <div class="recurso-card">
+          <div class="recurso-top">
+            <div class="recurso-type-icon">📘</div>
+            <div class="recurso-body">
+              <div class="recurso-title-row">
+                <span class="recurso-name">Meta Blueprint — Introduction to AI in Advertising</span>
+                <span class="tag tag-free">Gratuito</span>
+              </div>
+              <p class="recurso-short">Meta explica cómo su sistema de IA optimiza campañas publicitarias en Facebook e Instagram: segmentación automática, creatividades dinámicas, Advantage+ y predicción de resultados con ML.</p>
+              <div class="recurso-link-row">
+                <svg class="ext-icon" viewBox="0 0 16 16" fill="none"><path d="M6 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-3M9 2h5m0 0v5m0-5L8 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <a class="recurso-link" href="https://www.facebook.com/business/learn/courses" target="_blank">facebook.com/business/learn – Meta Blueprint</a>
+              </div>
+            </div>
+          </div>
+          <div class="recurso-nota-box">
+            <span class="nota-icon">💡</span>
+            <p class="nota-text">Imprescindible si gestionas o supervisas campañas de pago en redes sociales. Meta ha integrado IA de forma muy profunda en su plataforma publicitaria (Advantage+, audiencias predictivas, creatividades automáticas) y entender cómo funciona te permitirá sacar mucho más partido a las inversiones en paid media y hablar con propiedad ante clientes.</p>
+          </div>
+          <div class="recurso-done-row">
+            <span></span>
+            <button class="recurso-done-btn" id="rbtn-0-1" onclick="toggleRecurso(0,1)"><div class="r-check">✓</div> Marcar como hecho</button>
+          </div>
+        </div>
+
+        <div class="recurso-card">
+          <div class="recurso-top">
+            <div class="recurso-type-icon">📰</div>
+            <div class="recurso-body">
+              <div class="recurso-title-row">
+                <span class="recurso-name">Harvard Business Review — Marketing & AI</span>
+                <span class="tag tag-free">Gratuito</span>
+                <span class="tag tag-article">Artículos</span>
+              </div>
+              <p class="recurso-short">Colección de artículos de HBR sobre IA aplicada al marketing: personalización a escala, el futuro del CMO en la era de la IA, automatización de la experiencia de cliente y medición del ROI.</p>
+              <div class="recurso-link-row">
+                <svg class="ext-icon" viewBox="0 0 16 16" fill="none"><path d="M6 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-3M9 2h5m0 0v5m0-5L8 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <a class="recurso-link" href="https://hbr.org/topic/subject/marketing" target="_blank">hbr.org – Marketing & AI</a>
+              </div>
+            </div>
+          </div>
+          <div class="recurso-nota-box">
+            <span class="nota-icon">💡</span>
+            <p class="nota-text">Lectura continua recomendada durante todo el plan. Los artículos de HBR conectan la IA con decisiones estratégicas reales de marketing: cómo los CMOs están reorganizando sus equipos, qué métricas cambian con la IA y cómo justificar la inversión ante dirección. Selecciona 2–3 artículos por semana relacionados con tu actividad actual.</p>
+          </div>
+          <div class="recurso-done-row">
+            <span></span>
+            <button class="recurso-done-btn" id="rbtn-0-2" onclick="toggleRecurso(0,2)"><div class="r-check">✓</div> Marcar como hecho</button>
+          </div>
+        </div>
+
+      </div>
+      <div class="complete-row">
+        <button class="complete-btn" id="btn0" onclick="toggleDone(0)"><div class="check-circle">✓</div> Marcar módulo como completado</button>
+      </div>
+    </section>
+
+    <!-- MÓDULO 2 -->
+    <section class="module-panel" id="panel1">
+      <div class="module-header">
+        <div class="module-icon" style="background:rgba(167,139,250,.1);color:var(--mod2)">🛠️</div>
+        <div class="module-header-text">
+          <div class="module-eyebrow" style="color:var(--mod2)">Módulo 02 · Semanas 4–6</div>
+          <h2 class="module-title">Herramientas IA<br>para marketers</h2>
+          <p class="module-desc">Del concepto a la práctica. Aprende a usar las herramientas de IA más relevantes para el trabajo de marketing diario: generación de contenido, automatización de tareas, análisis y prompting avanzado.</p>
+          <div class="module-meta-pills">
+            <span class="pill">Enfoque práctico</span><span class="pill">1 recurso</span><span class="pill">Aplicación directa</span>
+          </div>
+        </div>
+      </div>
+      <div class="tiempo-box">
+        <span class="tiempo-icon">🕐</span>
+        <div class="tiempo-text"><strong>Tiempo estimado: ~2 horas</strong><br>Google Skills Prompt Design in Vertex AI (~2h). Gratuito, a tu ritmo.</div>
+      </div>
+      <p class="section-label">Objetivos del módulo</p>
+      <div class="obj-grid">
+        <div class="obj-card"><div class="obj-dot" style="background:var(--mod2)"></div><span class="obj-text">Dominar el prompting para tareas de marketing: copies, briefings, análisis de datos y propuestas</span></div>
+        <div class="obj-card"><div class="obj-dot" style="background:var(--mod2)"></div><span class="obj-text">Usar herramientas de IA (ChatGPT, Gemini, Canva AI, Jasper) con fluidez en el workflow diario</span></div>
+        <div class="obj-card"><div class="obj-dot" style="background:var(--mod2)"></div><span class="obj-text">Aplicar IA en email marketing, SEO, social media y análisis de campañas de LUCE IT</span></div>
+      </div>
+      <p class="section-label">Recursos del módulo</p>
+      <div class="recursos-grid">
+        <div class="recurso-card">
+          <div class="recurso-top">
+            <div class="recurso-type-icon">🔍</div>
+            <div class="recurso-body">
+              <div class="recurso-title-row">
+                <span class="recurso-name">Google Skills — Prompt Design in Vertex AI</span>
+                <span class="tag tag-free">Gratuito</span>
+              </div>
+              <p class="recurso-short">Curso de Google sobre cómo escribir prompts efectivos para tareas de negocio con IA generativa. Enfoque práctico en generación de texto, análisis de datos y automatización de contenidos.</p>
+              <div class="recurso-link-row">
+                <svg class="ext-icon" viewBox="0 0 16 16" fill="none"><path d="M6 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-3M9 2h5m0 0v5m0-5L8 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <a class="recurso-link" href="https://www.cloudskillsboost.google/course_templates/976" target="_blank">cloudskillsboost.google – Prompt Design in Vertex AI</a>
+              </div>
+            </div>
+          </div>
+          <div class="recurso-nota-box">
+            <span class="nota-icon">💡</span>
+            <p class="nota-text">La habilidad de prompting bien hecho es lo que separa a los marketers que usan la IA de forma superficial de los que la aprovechan a fondo. Este curso de Google te enseña a construir prompts estructurados para tareas concretas de marketing: briefings de campaña, análisis de copy, generación de variantes para test A/B y resúmenes ejecutivos.</p>
+          </div>
+          <div class="recurso-done-row">
+            <div class="mod-progress-mini"><div class="mini-bar"><div class="mini-bar-fill" id="minibar1"></div></div><span id="minipct1">0 / 1</span></div>
+            <button class="recurso-done-btn" id="rbtn-1-0" onclick="toggleRecurso(1,0)"><div class="r-check">✓</div> Marcar como hecho</button>
+          </div>
+        </div>
+      </div>
+      <div class="complete-row">
+        <button class="complete-btn" id="btn1" onclick="toggleDone(1)"><div class="check-circle">✓</div> Marcar módulo como completado</button>
+      </div>
+    </section>
+
+    <!-- MÓDULO 3 -->
+    <section class="module-panel" id="panel2">
+      <div class="module-header">
+        <div class="module-icon" style="background:rgba(52,211,153,.1);color:var(--mod3)">🔭</div>
+        <div class="module-header-text">
+          <div class="module-eyebrow" style="color:var(--mod3)">Módulo 03 · Semanas 7–8</div>
+          <h2 class="module-title">Tendencias y estrategia<br>de marketing con IA</h2>
+          <p class="module-desc">El módulo de cierre. Aquí elevarás el aprendizaje a visión estratégica: cómo está evolucionando el marketing con IA, qué tendencias marcarán los próximos años y cómo posicionar a LUCE IT como referente.</p>
+          <div class="module-meta-pills">
+            <span class="pill">Nivel estratégico</span><span class="pill">1 recurso</span><span class="pill">Lectura continua</span>
+          </div>
+        </div>
+      </div>
+      <div class="tiempo-box">
+        <span class="tiempo-icon">🕐</span>
+        <div class="tiempo-text"><strong>Tiempo estimado: ~2 horas</strong><br>Think with Google — lecturas semanales recomendadas a tu ritmo.</div>
+      </div>
+      <p class="section-label">Objetivos del módulo</p>
+      <div class="obj-grid">
+        <div class="obj-card"><div class="obj-dot" style="background:var(--mod3)"></div><span class="obj-text">Identificar las tendencias de IA que más van a impactar al marketing en los próximos 2–3 años</span></div>
+        <div class="obj-card"><div class="obj-dot" style="background:var(--mod3)"></div><span class="obj-text">Construir argumentarios para vender proyectos de IA en marketing a clientes de LUCE IT</span></div>
+        <div class="obj-card"><div class="obj-dot" style="background:var(--mod3)"></div><span class="obj-text">Posicionarte como referente en marketing con IA dentro y fuera de LUCE IT</span></div>
+      </div>
+      <p class="section-label">Recursos del módulo</p>
+      <div class="recursos-grid">
+        <div class="recurso-card">
+          <div class="recurso-top">
+            <div class="recurso-type-icon">🌐</div>
+            <div class="recurso-body">
+              <div class="recurso-title-row">
+                <span class="recurso-name">Think with Google — AI & Marketing Insights</span>
+                <span class="tag tag-free">Gratuito</span>
+                <span class="tag tag-web">Web de referencia</span>
+              </div>
+              <p class="recurso-short">La publicación de referencia de Google para marketers: datos de mercado, casos de uso reales de IA en marketing, tendencias de consumo y guías prácticas sobre búsqueda, vídeo y personalización con IA.</p>
+              <div class="recurso-link-row">
+                <svg class="ext-icon" viewBox="0 0 16 16" fill="none"><path d="M6 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-3M9 2h5m0 0v5m0-5L8 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <a class="recurso-link" href="https://www.thinkwithgoogle.com/marketing-strategies/automation/ai-marketing/" target="_blank">thinkwithgoogle.com – AI & Marketing</a>
+              </div>
+            </div>
+          </div>
+          <div class="recurso-nota-box">
+            <span class="nota-icon">💡</span>
+            <p class="nota-text">Think with Google es la publicación de marketing más influyente del sector y está llena de datos y casos reales. La sección de IA ofrece benchmarks y estadísticas que puedes usar directamente en presentaciones y propuestas para clientes. Recomendado leer 2–3 artículos por semana a partir de este módulo para mantenerse al día de forma permanente.</p>
+          </div>
+          <div class="recurso-done-row">
+            <div class="mod-progress-mini"><div class="mini-bar"><div class="mini-bar-fill" id="minibar2"></div></div><span id="minipct2">0 / 1</span></div>
+            <button class="recurso-done-btn" id="rbtn-2-0" onclick="toggleRecurso(2,0)"><div class="r-check">✓</div> Marcar como hecho</button>
+          </div>
+        </div>
+      </div>
+      <div class="complete-row">
+        <button class="complete-btn" id="btn2" onclick="toggleDone(2)"><div class="check-circle">✓</div> Marcar módulo como completado</button>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<div class="toast" id="toast"><div class="toast-dot"></div><span id="toast-msg">Progreso guardado</span></div>
+
+<script>
+  const STORAGE_KEY='luceit_judit_marketing_v1';
+  const MODULES=[{total:3,ids:['rbtn-0-0','rbtn-0-1','rbtn-0-2']},{total:1,ids:['rbtn-1-0']},{total:1,ids:['rbtn-2-0']}];
+  let state={recursos:[[false,false,false],[false],[false]],modules:[false,false,false]};
+  function loadState(){try{const s=localStorage.getItem(STORAGE_KEY);if(s){const p=JSON.parse(s);if(p.recursos&&p.modules)state=p;}}catch(e){}}
+  function saveState(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}catch(e){}}
+  function applyState(){MODULES.forEach((mod,mi)=>{mod.ids.forEach((id,ri)=>{const btn=document.getElementById(id);const card=btn?btn.closest('.recurso-card'):null;const isDone=state.recursos[mi][ri];if(btn){btn.classList.toggle('r-done',isDone);btn.innerHTML=`<div class="r-check">✓</div> ${isDone?'Completado':'Marcar como hecho'}`;btn.onclick=()=>toggleRecurso(mi,ri);}if(card)card.classList.toggle('r-done',isDone);});const modDone=state.modules[mi];const mBtn=document.getElementById('btn'+mi);const check=document.getElementById('check'+mi);if(mBtn){mBtn.classList.toggle('done',modDone);mBtn.innerHTML=`<div class="check-circle">✓</div> ${modDone?'Módulo completado':'Marcar módulo como completado'}`;}if(check)check.classList.toggle('done',modDone);updateModuleProgress(mi);});updateGlobalProgress();}
+  function toggleRecurso(mi,ri){state.recursos[mi][ri]=!state.recursos[mi][ri];const id=MODULES[mi].ids[ri];const btn=document.getElementById(id);const card=btn?btn.closest('.recurso-card'):null;const isDone=state.recursos[mi][ri];if(btn){btn.classList.toggle('r-done',isDone);btn.innerHTML=`<div class="r-check">✓</div> ${isDone?'Completado':'Marcar como hecho'}`;btn.onclick=()=>toggleRecurso(mi,ri);}if(card)card.classList.toggle('r-done',isDone);const allDone=state.recursos[mi].every(Boolean);if(allDone&&!state.modules[mi]){state.modules[mi]=true;const mBtn=document.getElementById('btn'+mi);const check=document.getElementById('check'+mi);if(mBtn){mBtn.classList.add('done');mBtn.innerHTML='<div class="check-circle">✓</div> Módulo completado';}if(check)check.classList.add('done');showToast('🎉 ¡Módulo completado!');}else{showToast(isDone?'✓ Recurso marcado como hecho':'Recurso desmarcado');}updateModuleProgress(mi);updateGlobalProgress();saveState();}
+  function toggleDone(mi){state.modules[mi]=!state.modules[mi];const btn=document.getElementById('btn'+mi);const check=document.getElementById('check'+mi);const isDone=state.modules[mi];if(btn){btn.classList.toggle('done',isDone);btn.innerHTML=`<div class="check-circle">✓</div> ${isDone?'Módulo completado':'Marcar módulo como completado'}`;}if(check)check.classList.toggle('done',isDone);showToast(isDone?'✓ Módulo marcado como completado':'Módulo desmarcado');updateGlobalProgress();saveState();}
+  function updateModuleProgress(mi){const total=MODULES[mi].total;const done=state.recursos[mi].filter(Boolean).length;const pct=total>0?Math.round((done/total)*100):0;const minibar=document.getElementById('minibar'+mi);const minipct=document.getElementById('minipct'+mi);if(minibar)minibar.style.width=pct+'%';if(minipct)minipct.textContent=done+' / '+total;const navFill=document.getElementById('nav-fill'+mi);const navPct=document.getElementById('nav-pct'+mi);if(navFill)navFill.style.width=pct+'%';if(navPct)navPct.textContent=pct+'%';}
+  function updateGlobalProgress(){const totalR=MODULES.reduce((a,m)=>a+m.total,0);const doneR=state.recursos.reduce((a,m)=>a+m.filter(Boolean).length,0);const pct=Math.round((doneR/totalR)*100);document.getElementById('progressFill').style.width=pct+'%';document.getElementById('progressPct').textContent=pct+'%';}
+  function showModule(idx){document.querySelectorAll('.module-panel').forEach((p,i)=>p.classList.toggle('active',i===idx));document.querySelectorAll('.mod-nav-btn').forEach((b,i)=>b.classList.toggle('active',i===idx));}
+  function resetProgress(){if(!confirm('¿Seguro que quieres reiniciar todo el progreso?'))return;state={recursos:[[false,false,false],[false],[false]],modules:[false,false,false]};saveState();applyState();showToast('🔄 Progreso reiniciado');}
+  let toastTimer;
+  function showToast(msg){const t=document.getElementById('toast');document.getElementById('toast-msg').textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2400);}
+  loadState();applyState();
+</script>
+</body>
+</html>
